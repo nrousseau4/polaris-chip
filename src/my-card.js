@@ -14,10 +14,11 @@ export class MyCard extends LitElement {
 
   constructor() {
     super();
-    this.title = 'My card';
+    this.title = '';
     this.link = '#';
     this.image = null;
-    this.description = 'text';
+    this.description = '';
+    this.buttonDesc = '';
   }
 
   static get styles() {
@@ -26,7 +27,7 @@ export class MyCard extends LitElement {
         display: inline-block;
       }
 
-      div {
+      .card {
         padding: 8px;
         width: 300px;
         border-radius: 8px;
@@ -35,8 +36,9 @@ export class MyCard extends LitElement {
         border: 2px solid black;
       }
 
-      h1 {
-        font-size:24px;
+      .cardTitle {
+        margin: 16px;
+        font-size: 24px;
       }
 
       img {
@@ -65,20 +67,22 @@ export class MyCard extends LitElement {
   }
 
   render() {
-    return html`<div>
-      <img src=${this.image}>
-      <h1>${this.title}</h1>
+    return html`
+    <div class="card">
+      <img src="${this.image}">
+      <div class="cardTitle">${this.title}</div>
       <p>${this.description}</p>
-      <button><a href=${this.link}>Details</a></button>
-      </div>`;
+      <button><a href="${this.link}" target="_blank">${this.buttonDesc}</a></button>
+    </div>`;
   }
 
   static get properties() {
     return {
       title: { type: String },
-      image: { type: Image},
-      link: {type: String},
-      description: {type: String}
+      image: { type: String},
+      link: { type: String},
+      description: { type: String},
+      buttonDesc: { type: String}
     };
   }
 }
