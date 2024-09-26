@@ -32,7 +32,7 @@ export class MyCard extends LitElement {
         width: 300px;
         border-radius: 8px;
         text-align: center;
-        background-color: white;
+        background-color: var(--card-bg-color, white);
         border: 2px solid black;
       }
 
@@ -51,17 +51,17 @@ export class MyCard extends LitElement {
       button {
         margin: auto;
         display: flex;
-        background-color: blue;
+        background-color: var(--button-bg-color, blue);
       }
 
       a:focus,
       a:hover {
-        color: yellow;
+        color: var(--link-highlight-color, yellow);
       }
 
       a {
         text-decoration: none;
-        color: white;
+        color: var(--link-text-color, white);
       }
     `;
   }
@@ -79,10 +79,10 @@ export class MyCard extends LitElement {
   static get properties() {
     return {
       title: { type: String },
-      image: { type: String},
-      link: { type: String},
-      description: { type: String},
-      buttonDesc: { type: String}
+      image: { type: String },
+      link: { type: String },
+      description: { type: String },
+      buttonDesc: { type: String }
     };
   }
 }
