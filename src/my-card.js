@@ -19,12 +19,21 @@ export class MyCard extends LitElement {
     this.image = null;
     this.description = '';
     this.buttonDesc = '';
+    this.fancy = false;
   }
 
   static get styles() {
     return css`
       :host {
         display: inline-block;
+      }
+
+      :host([fancy]) {
+        display: inline-block;
+        background-color: pink;
+        border: 2px solid fuchsia;
+        border-radius: 10px;
+        box-shadow: 5px 5px 5px red;
       }
 
       .card {
@@ -37,7 +46,7 @@ export class MyCard extends LitElement {
       }
 
       .cardTitle {
-        margin: 16px;
+        margin: 8px;
         font-size: 24px;
       }
 
@@ -46,6 +55,25 @@ export class MyCard extends LitElement {
         display: flex;
         height: 150px;
         width: 200px;
+        aspect-ratio: 1 / 1;
+      }
+
+      details summary {
+        margin: 8px;
+        padding: 8px;
+      }
+
+      details[open] summary {
+        font-weight: bold;
+      }
+
+      details div {
+        margin: 8px;
+        padding: 8px;
+        border: 2px solid black;
+        text-align: center;
+        height: 50px;
+        overflow: auto;
       }
 
       button {
@@ -66,12 +94,27 @@ export class MyCard extends LitElement {
     `;
   }
 
+  openChanged(e) {
+    console.log(e.newState);
+    if (e.newState === "open") {
+      this.fancy = true;
+    }
+    else {
+      this.fancy = false;
+    }
+  }
+
   render() {
     return html`
     <div class="card">
       <img src="${this.image}">
       <div class="cardTitle">${this.title}</div>
-      <p>${this.description}</p>
+      <details ?open="${this.fancy}" @toggle="${this.openChanged}">
+        <summary>Description</summary>
+        <div>
+          <slot><p>${this.description}</p></slot>
+        </div>
+      </details>
       <button><a href="${this.link}" target="_blank">${this.buttonDesc}</a></button>
     </div>`;
   }
@@ -82,7 +125,8 @@ export class MyCard extends LitElement {
       image: { type: String },
       link: { type: String },
       description: { type: String },
-      buttonDesc: { type: String }
+      buttonDesc: { type: String },
+      fancy: { type: Boolean, reflect: true }
     };
   }
 }
