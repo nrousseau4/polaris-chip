@@ -72,8 +72,8 @@ export class MyCard extends LitElement {
         padding: 8px;
         border: 2px solid black;
         text-align: center;
-        height: 50px;
-        overflow: auto;
+        height: auto;
+        width: auto;
       }
 
       button {
@@ -112,7 +112,7 @@ export class MyCard extends LitElement {
       <details ?open="${this.fancy}" @toggle="${this.openChanged}">
         <summary>Description</summary>
         <div>
-          <slot><p>${this.description}</p></slot>
+          <slot name="body"><p>${this.description}</p></slot>
         </div>
       </details>
       <button><a href="${this.link}" target="_blank">${this.buttonDesc}</a></button>

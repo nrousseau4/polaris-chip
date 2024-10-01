@@ -41,7 +41,14 @@
     link="https://psu.edu" 
     title="Penn State" 
     description="See what's happening at Penn State"
-    buttonDesc="Details"></my-card>
+    buttonDesc="Details">
+    <p slot="body">
+      <true-false-question question="HAX is a game changer.">
+      <input type="checkbox" value="True" correct="correct" role="textbox">
+      <input type="checkbox" value="False">
+      </true-false-question>
+    </p>
+  </my-card>
 
   <my-card 
     image="https://espnpressroom.com/us/files/2021/06/0-ESPN-Logo-for-PressRoom-780x470.jpg" 
@@ -61,7 +68,7 @@
     image="https://assets.actionnetwork.com/663335_FanDuelReview.jpg" 
     link="https://fanduel.com" 
     title="FanDuel" 
-    description="Bet your life savings on FanDuel"
+    description="Bet your life savings on FanDuel."
     buttonDesc="Details"></my-card>
 
   <my-card 
@@ -69,11 +76,13 @@
     link="https://xbox.com" 
     title="Xbox" 
     description="Xbox is the best console"
-    buttonDesc="Details"></my-card>
+    buttonDesc="Details">
+    <p slot="body">Xbox is the best console</p></my-card>
 
   <!-- this is what is bringing in the definition for this tag -->
   <script type="module" src="./src/polaris-chip.js"></script>
   <script type="module" src="./src/my-card.js"></script>
+  <script type="module" src="https://cdn.hax.cloud/cdn/build/es6/node_modules/@haxtheweb/multiple-choice/lib/true-false-question.js"></script>
 </body>
 
 </html>
